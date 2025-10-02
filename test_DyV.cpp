@@ -17,6 +17,10 @@ int main() {
     vector<char> vChar{'a', 'c', 'e', 'g', 'i'};
     int posChar = BusquedaBinaria('e', vChar, 0, vChar.size() - 1);
     cout << "Posición de la e: " << posChar << endl;
+    
+    vector<int> vDesc{15, 13, 11, 9, 7, 5, 3, 1};
+    int posDesc = BusquedaBinaria_INV(7, vDesc, 0, vDesc.size() - 1);
+    cout << "Posición de 7 en vector descendente: " << posDesc << std::endl;
 
     return 0;
 
