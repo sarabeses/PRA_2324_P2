@@ -87,4 +87,64 @@ void QuickSort(std::vector<T>& v, int ini, int fin) {
     }
 }
 
+// quick sort primer elemento es pivote
+
+template <typename T>
+
+int PartitionPrimer(std::vector<T>& v, int ini, int fin) {
+    std::swap(v[ini], v[fin]);
+    return Partition(v, ini, fin);
+}
+
+template <typename T>
+
+void QuickSortPrimer (std::vector<T>& v, int ini, int fin) {
+    if (ini < fin) {
+        int pivote = PartitionPrimer (v, ini, fin);
+        QuickSortPrimer(v, ini, pivote - 1);
+        QuickSortPrimer(v, pivote + 1, fin);
+    }
+}
+
+// quick sort random
+
+template <typename T>
+
+int PartitionRandom(std::vector<T>& v, int ini, int fin) {
+    std::srand(std::time(nullptr));
+    int randV = ini + std::rand() % (fin - ini + 1);
+    std::swap(v[randV], v[fin]);
+    return Partition(v, ini, fin);
+}
+
+template <typename T>
+
+void QuickSortRandom(std::vector<T>& v, int ini, int fin) {
+    if (ini < fin) {
+        int pivote = PartitionRandom(v, ini, fin);
+        QuickSortRandom(v, ini, pivote - 1);
+        QuickSortRandom(v, pivote + 1, fin);
+    }
+}
+
+// quick sort central
+
+template <typename T>
+
+int PartitionCentral(std::vector<T>& v, int ini, int fin) {
+    int mid = ini + (fin - ini) / 2;
+    std::swap(v[mid], v[fin]);
+    return Partition(v, ini, fin);
+}
+
+template <typename T>
+
+void QuickSortCentral(std::vector<T>& v, int ini, int fin) {
+    if (ini < fin) {
+        int pivote = PartitionCentral(v, ini, fin);
+        QuickSortCentral(v, ini, pivote - 1);
+        QuickSortCentral(v, pivote + 1, fin);
+    }
+}
+
 #endif
